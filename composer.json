@@ -3,6 +3,7 @@
     "description": "Select2 field type for CMB2",
     "license": "GPL-2.0+",
     "type": "wordpress-plugin",
+    "prefer-stable": true,
     "minimum-stability": "dev",
     "keywords": ["wordpress", "plugin"],
     "homepage": "https://github.com/mustardBees/cmb-field-select2",
