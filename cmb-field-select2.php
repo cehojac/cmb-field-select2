@@ -86,7 +86,7 @@ class PW_CMB2_Field_Select2 {
 		if ( version_compare( CMB2_VERSION, '2.2.2', '<' ) || ! class_exists( 'CMB2_Type_Taxonomy_Select' ) ) {
 			$field_type_object->type = new CMB2_Type_Taxonomy_Select( $field_type_object );				
 			return;
-		}			}
+		}			
 
 		$all_terms    = $field_type_object->type->get_terms();
 		$object_terms = $field_type_object->type->get_object_terms();
