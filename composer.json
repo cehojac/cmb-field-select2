@@ -1,8 +1,9 @@
 {
-    "name": "mustardBees/cmb-field-select2",
+    "name": "cehojac/cmb-field-select2",
     "description": "Select2 field type for CMB2",
     "license": "GPL-2.0+",
     "type": "wordpress-plugin",
+    "minimum-stability": "dev",
     "keywords": ["wordpress", "plugin"],
     "homepage": "https://github.com/mustardBees/cmb-field-select2",
     "authors": [
