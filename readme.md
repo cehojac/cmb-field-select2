@@ -8,6 +8,9 @@ This plugin gives you two additional field types based on Select2:
 
 1. The `pw_select` field acts much like the default `select` field. However, it adds typeahead-style search allowing you to quickly make a selection from a large list
 2. The `pw_multiselect` field allows you to select multiple values with typeahead-style search. The values can be dragged and dropped to reorder
+new items
+3. The `pw_select_taxonomy` and
+4. The `pw_multiselect_taxonomy`
 
 ## Installation
 
