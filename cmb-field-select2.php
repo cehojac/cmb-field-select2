@@ -18,7 +18,7 @@ class PW_CMB2_Field_Select2 {
 	/**
 	 * Current version number
 	 */
-	const VERSION = '3.0.3';
+	const VERSION = '3.0.4';
 
 	/**
 	 * Initialize the plugin by hooking into CMB2
@@ -80,12 +80,13 @@ class PW_CMB2_Field_Select2 {
 	/**
 	 * Render multi-value select input field
 	 */
-	public function render_pw_multiselect_taxonomy( $field, $field_escaped_value, $field_object_id, $field_object_type, $field_type_object ) {
+	public function render_pw_multiselect_taxonomy( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
 		$this->setup_admin_scripts();
 
-		if ( version_compare( CMB2_VERSION, '2.2.2', '>=' ) ) {
-			$field_type_object->type = new CMB2_Type_Taxonomy_Select( $field_type_object );
-		}
+		if ( version_compare( CMB2_VERSION, '2.2.2', '<' ) || ! class_exists( 'CMB2_Type_Taxonomy_Select' ) ) {
+			$field_type_object->type = new CMB2_Type_Taxonomy_Select( $field_type_object );				
+			return;
+		}			}
 
 		$all_terms    = $field_type_object->type->get_terms();
 		$object_terms = $field_type_object->type->get_object_terms();
@@ -222,8 +223,9 @@ class PW_CMB2_Field_Select2 {
 	 * @return string
 	 */
 	public function pw_multiselect_taxonomy_sanitize( $override_value, $value, $object_id, $field_args, $sanitizer ) {
-		wp_set_object_terms( $object_id, $value, $field_args['taxonomy'] );
-		return '';
+		if ( $sanitizer->field->should_show() ) {
+			wp_set_object_terms( $object_id, $value, $field_args['taxonomy'] );
+		}
 	}
 
 	/**
